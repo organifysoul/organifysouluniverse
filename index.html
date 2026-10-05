@@ -46,7 +46,6 @@
   </script>
 
   <style>
-    /* Editorial Codex aesthetic touches */
     ::selection {
       background: #C5A059;
       color: #151412;
@@ -70,24 +69,38 @@
       background: radial-gradient(circle at 50% 30%, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
     }
 
-    /* Subtle texture simulation */
     .bg-parchment-grain {
       background-color: #151412;
       background-image: radial-gradient(#26231F 0.75px, transparent 0.75px);
       background-size: 24px 24px;
     }
 
-    /* Hide scrollbars for clean codex navigation */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    /* Ambient Canvas overlay */
+    #ambientCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.65;
     }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+
+    /* Sound indicator pulse */
+    .sound-pulse {
+      animation: soundWave 2s infinite ease-in-out;
+    }
+    @keyframes soundWave {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 1; }
     }
   </style>
 </head>
-<body class="bg-charcoal text-[#DDD7CD] font-sans antialiased selection:bg-gold selection:text-charcoal bg-parchment-grain min-h-screen">
+<body class="bg-charcoal text-[#DDD7CD] font-sans antialiased selection:bg-gold selection:text-charcoal bg-parchment-grain min-h-screen relative">
+
+  <!-- Interactive Ambient Atmospheric Particle Canvas -->
+  <canvas id="ambientCanvas"></canvas>
 
   <!-- TOP ASTRONOMICAL / NAVIGATION BAR -->
   <header class="sticky top-0 z-40 bg-charcoal/90 backdrop-blur-md border-b border-gold/20 transition-all duration-300">
@@ -108,16 +121,24 @@
         <a href="#relic" class="hover:text-gold transition">The Codex</a>
       </nav>
 
-      <a href="#relic" class="inline-flex items-center space-x-2 text-xs font-semibold tracking-widest uppercase border border-gold/40 px-5 py-2.5 text-gold hover:bg-gold hover:text-charcoal transition duration-300">
-        <span>Enter Journey</span>
-        <span>→</span>
-      </a>
+      <div class="flex items-center space-x-4">
+        <!-- Interactive Ambient Audio BGM Toggle -->
+        <button id="bgmToggle" onclick="toggleBGM()" class="inline-flex items-center space-x-2 text-xs font-serif tracking-widest uppercase border border-gold/30 px-3.5 py-2 text-stone-300 hover:border-gold hover:text-gold transition" title="Toggle Inner World Ambient Soundscape">
+          <span id="bgmIcon" class="text-gold text-sm">◇</span>
+          <span id="bgmLabel">Soundscape: Off</span>
+        </button>
+
+        <a href="#relic" class="inline-flex items-center space-x-2 text-xs font-semibold tracking-widest uppercase border border-gold/40 px-5 py-2.5 text-gold hover:bg-gold hover:text-charcoal transition duration-300">
+          <span>Enter Journey</span>
+          <span>→</span>
+        </a>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main class="relative z-10">
     <!-- THRESHOLD 1: THE GATEWAY (HERO) -->
-    <section id="gateway" class="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 py-24 glow-parchment overflow-hidden border-b border-gold/15">
+    <section id="gateway" class="relative min-h-[92vh] flex flex-col justify-center items-center text-center px-6 py-24 glow-parchment overflow-hidden border-b border-gold/15">
       <div class="max-w-4xl mx-auto z-10 space-y-8">
         
         <div class="inline-flex items-center space-x-3 text-gold/80 text-xs tracking-[0.3em] uppercase">
@@ -163,7 +184,7 @@
     </section>
 
     <!-- CREATIVE PRINCIPLE BANNER: WORLD -> BEHAVIOR -> SYMBOL -> BEAUTY -->
-    <section class="py-16 border-b border-gold/15 bg-charcoal/50">
+    <section class="py-14 border-b border-gold/15 bg-charcoal/50">
       <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div class="space-y-2">
           <span class="font-serif text-gold text-xs tracking-widest uppercase block">I. World</span>
@@ -184,7 +205,7 @@
       </div>
     </section>
 
-    <!-- THRESHOLD 2: THE EIGHT TERRITORIES & WANDERERS -->
+    <!-- THRESHOLD 2: THE EIGHT TERRITORIES & WANDERERS WITH CUSTOM ARTWORK -->
     <section id="territories" class="py-28 px-6 max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
         <span class="text-gold text-xs tracking-[0.3em] uppercase block font-serif">The Living Geography</span>
@@ -196,7 +217,7 @@
 
       <!-- Territory Selector Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="wandererGrid">
-        <!-- Rendered by JavaScript dynamically from Canon definitions -->
+        <!-- Injected via JavaScript with dynamic SVG painterly terrain banners -->
       </div>
 
       <!-- Wanderer Detailed Modal / Inspection Drawer -->
@@ -276,8 +297,8 @@
               </div>
 
               <!-- Interactive Codex Simulated Viewport -->
-              <div id="codexViewport" class="aspect-[16/10] bg-[#0E0D0B] border border-stone-800 p-6 flex flex-col justify-between text-stone-300 transition-all duration-300">
-                <div class="flex justify-between items-start">
+              <div id="codexViewport" class="aspect-[16/10] bg-[#0E0D0B] border border-stone-800 p-6 flex flex-col justify-between text-stone-300 transition-all duration-300 relative overflow-hidden">
+                <div class="flex justify-between items-start z-10">
                   <div>
                     <span id="viewportTerritory" class="text-gold text-xs tracking-widest uppercase font-serif">EMBERWILDS • PATH 01</span>
                     <h3 id="viewportTitle" class="font-serif text-xl sm:text-2xl text-bone mt-1">The Pressure Crucible</h3>
@@ -285,14 +306,17 @@
                   <span id="viewportWanderer" class="text-xs border border-stone-700 px-3 py-1 text-stone-400">OS-01 KAELROS</span>
                 </div>
 
-                <div id="viewportQuote" class="my-auto italic font-serif text-sm sm:text-base text-stone-300 border-l-2 border-gold/60 pl-4 py-1">
+                <div id="viewportQuote" class="my-auto italic font-serif text-sm sm:text-base text-stone-300 border-l-2 border-gold/60 pl-4 py-1 z-10">
                   "Anger is not a defect of character. It is an unchanneled ignition. Stand where the spark cannot set your house on fire."
                 </div>
 
-                <div class="flex justify-between items-end border-t border-stone-900 pt-4 text-[11px] text-stone-500">
+                <div class="flex justify-between items-end border-t border-stone-900 pt-4 text-[11px] text-stone-500 z-10">
                   <span>TAP TABS TO SWITCH EXPEDITIONS</span>
                   <span>HYPERLINKED PDF STATIC ARCHITECTURE</span>
                 </div>
+
+                <!-- Subtle atmospheric backdrop -->
+                <div id="viewportBgPattern" class="absolute inset-0 opacity-15 pointer-events-none transition-all duration-500"></div>
               </div>
 
               <!-- Page Switcher Tabs -->
@@ -383,7 +407,7 @@
   </main>
 
   <!-- COLOPHON & FOOTNOTES -->
-  <footer class="border-t border-stone-900 bg-black/90 py-16 px-6 text-stone-500 text-xs">
+  <footer class="border-t border-stone-900 bg-black/90 py-16 px-6 text-stone-500 text-xs relative z-10">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
       <div class="space-y-3">
         <span class="font-serif text-bone tracking-widest uppercase text-sm block">ORGANIFYSOUL</span>
@@ -413,9 +437,138 @@
     </div>
   </footer>
 
+  <!-- PROCEDURAL WEB AUDIO SYNTH ENGINE (INNER WORLD AMBIENCE) -->
+  <script>
+    let audioCtx = null;
+    let isBgmPlaying = false;
+    let masterGain = null;
+    let activeOscillators = [];
+
+    function initAudioEngine() {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContext();
+
+      // Master output gain
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      masterGain.connect(audioCtx.destination);
+
+      // Low Grounding Drone (Frequencies aligned to deep meditative fundamentals: 55Hz & 110Hz)
+      const droneFreqs = [55, 110, 164.81];
+      droneFreqs.forEach(freq => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        osc.connect(gain);
+        gain.connect(masterGain);
+        osc.start();
+        activeOscillators.push(osc);
+      });
+
+      // Shimmer High Air (Ethereal overtone: 329.63Hz & 440Hz with subtle slow LFO modulation)
+      const airOsc = audioCtx.createOscillator();
+      const airGain = audioCtx.createGain();
+      airOsc.type = 'triangle';
+      airOsc.frequency.setValueAtTime(329.63, audioCtx.currentTime);
+      airGain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+      airOsc.connect(airGain);
+      airGain.connect(masterGain);
+      airOsc.start();
+      activeOscillators.push(airOsc);
+    }
+
+    function toggleBGM() {
+      if (!audioCtx) {
+        initAudioEngine();
+      }
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const icon = document.getElementById('bgmIcon');
+      const label = document.getElementById('bgmLabel');
+
+      if (!isBgmPlaying) {
+        // Fade in
+        masterGain.gain.linearRampToValueAtTime(0.25, audioCtx.currentTime + 2.5);
+        isBgmPlaying = true;
+        icon.innerText = '✦';
+        icon.classList.add('sound-pulse');
+        label.innerText = 'Soundscape: On';
+      } else {
+        // Fade out
+        masterGain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+        isBgmPlaying = false;
+        icon.innerText = '◇';
+        icon.classList.remove('sound-pulse');
+        label.innerText = 'Soundscape: Off';
+      }
+    }
+  </script>
+
+  <!-- AMBIENT CANVAS BACKGROUND ANIMATION (EMBERS & DRIFTING MIST) -->
+  <script>
+    const canvas = document.getElementById('ambientCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Mote {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.6;
+        this.speedX = (Math.random() - 0.5) * 0.35;
+        this.speedY = -Math.random() * 0.45 - 0.15;
+        this.alpha = Math.random() * 0.6 + 0.2;
+        this.color = Math.random() > 0.4 ? '197, 160, 89' : '220, 120, 80'; // Gold or Ember
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.y < 0 || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+          this.y = canvas.height + 10;
+        }
+      }
+      draw() {
+        ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 48; i++) {
+      particles.push(new Mote());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  </script>
+
   <!-- DATA & ENGINE SCRIPT -->
   <script>
-    // LOCKED CANON DATA FOR THE EIGHT WANDERERS & TERRITORIES
+    // LOCKED CANON DATA FOR THE EIGHT WANDERERS & TERRITORIES WITH ARTWORK VIGNETTES
     const wanderers = [
       {
         id: "OS-01",
@@ -426,7 +579,22 @@
         voice: "Blunt, practical, protective, action-oriented",
         behavior: "The earth fractures under heat until an outlet is carved. He redirects pressure before the chamber ruptures.",
         psychology: "Anger and distress tolerance. Experiencing boundary defense without uncontrolled destruction.",
-        quote: "You don't put out a furnace by pretending it isn't burning. You channel the flue."
+        quote: "You don't put out a furnace by pretending it isn't burning. You channel the flue.",
+        svg: `<svg viewBox="0 0 400 240" class="w-full h-44 object-cover" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradEmber" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2D110D"/>
+              <stop offset="60%" stop-color="#4A1813"/>
+              <stop offset="100%" stop-color="#8C382C"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="240" fill="url(#gradEmber)"/>
+          <path d="M0 240 L80 160 L160 210 L260 140 L340 190 L400 130 L400 240 Z" fill="#150806" opacity="0.9"/>
+          <path d="M40 240 L130 180 L220 220 L310 165 L400 210 L400 240 Z" fill="#200B09" opacity="0.7"/>
+          <circle cx="260" cy="138" r="3" fill="#DFBF7A" filter="drop-shadow(0 0 6px #C5A059)"/>
+          <path d="M120 210 Q 150 130 180 200" stroke="#DFBF7A" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <path d="M240 180 Q 260 90 290 170" stroke="#DFBF7A" stroke-width="1.2" fill="none" opacity="0.5"/>
+        </svg>`
       },
       {
         id: "OS-02",
@@ -437,7 +605,22 @@
         voice: "Precise, questioning, evidence-aware",
         behavior: "Mist wraps the pass so thickly that feet cannot see stone. She stops walking on rumors and tests the rock beneath her heels.",
         psychology: "Anxiety and hyper-vigilance. Disentangling catastrophic projection from tangible evidence.",
-        quote: "Fear assumes every shadow is sharp. I do not run until I touch the edge myself."
+        quote: "Fear assumes every shadow is sharp. I do not run until I touch the edge myself.",
+        svg: `<svg viewBox="0 0 400 240" class="w-full h-44 object-cover" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradVeil" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0E1217"/>
+              <stop offset="50%" stop-color="#1B222C"/>
+              <stop offset="100%" stop-color="#2A3342"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="240" fill="url(#gradVeil)"/>
+          <ellipse cx="200" cy="180" rx="160" ry="40" fill="#131922" opacity="0.8"/>
+          <path d="M60 240 L180 90 L240 160 L320 70 L400 240 Z" fill="#0A0E13" opacity="0.9"/>
+          <path d="M0 170 Q 100 130 200 160 T 400 140" stroke="#48596E" stroke-width="14" fill="none" opacity="0.25"/>
+          <path d="M0 190 Q 150 150 280 180 T 400 170" stroke="#6F88A6" stroke-width="8" fill="none" opacity="0.2"/>
+          <circle cx="180" cy="90" r="2.5" fill="#FAF7F2" opacity="0.8"/>
+        </svg>`
       },
       {
         id: "OS-03",
@@ -448,7 +631,21 @@
         voice: "Warm, playful, disarming",
         behavior: "Sunlight pools where walls have been lowered. He refuses to wear armor in an orchard.",
         psychology: "Unconditional self-worth. Softening protective defensiveness to receive warmth.",
-        quote: "You have earned the right to exist without performing a siege every morning."
+        quote: "You have earned the right to exist without performing a siege every morning.",
+        svg: `<svg viewBox="0 0 400 240" class="w-full h-44 object-cover" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradSun" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3D290A"/>
+              <stop offset="60%" stop-color="#734F18"/>
+              <stop offset="100%" stop-color="#C98B2C"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="240" fill="url(#gradSun)"/>
+          <circle cx="200" cy="80" r="45" fill="#F4D38B" opacity="0.4"/>
+          <circle cx="200" cy="80" r="22" fill="#FAF7F2" opacity="0.8"/>
+          <path d="M0 240 Q 120 180 240 220 T 400 200 L 400 240 Z" fill="#241906"/>
+          <path d="M80 240 Q 200 150 340 230 L 400 240 Z" fill="#181104" opacity="0.9"/>
+        </svg>`
       },
       {
         id: "OS-04",
@@ -459,7 +656,21 @@
         voice: "Quiet, spacious, gentle",
         behavior: "A subterranean mirror pool where ripples settle only when oars are completely drawn from the water.",
         psychology: "Nervous system regulation. Stepping outside sensory overload into deep stillness.",
-        quote: "The water only clears when you stop thrashing to see your reflection."
+        quote: "The water only clears when you stop thrashing to see your reflection.",
+        svg: `<svg viewBox="0 0 400 240" class="w-full h-44 object-cover" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradStill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0F1818"/>
+              <stop offset="60%" stop-color="#1F2F30"/>
+              <stop offset="100%" stop-color="#3A5051"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="240" fill="url(#gradStill)"/>
+          <line x1="0" y1="140" x2="400" y2="140" stroke="#7AA3A4" stroke-width="0.8" opacity="0.5"/>
+          <ellipse cx="200" cy="165" rx="140" ry="12" fill="none" stroke="#5C8182" stroke-width="1" opacity="0.6"/>
+          <ellipse cx="200" cy="185" rx="80" ry="6" fill="none" stroke="#7AA3A4" stroke-width="0.8" opacity="0.4"/>
+          <path d="M0 240 L120 170 L200 210 L300 150 L400 240 Z" fill="#080D0D" opacity="0.8"/>
+        </svg>`
       },
       {
         id: "OS-05",
@@ -470,7 +681,23 @@
         voice: "Restrained, honest, emotionally perceptive",
         behavior: "Perpetual grey downpours that saturate the soil until the riverbeds deepen naturally.",
         psychology: "Grief, loss, and emotional processing. Allowing sadness its rightful season.",
-        quote: "Dry ground cannot be forced after a storm. Let it soak through. The path will show."
+        quote: "Dry ground cannot be forced after a storm. Let it soak through. The path will show.",
+        svg: `<svg viewBox="0 0 400 240" class="w-full h-44 object-cover" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradRain" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#11161C"/>
+              <stop offset="60%" stop-color="#222C38"/>
+              <stop offset="100%" stop-color="#384454"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="240" fill="url(#gradRain)"/>
+          <!-- Rain streaks -->
+          <line x1="60" y1="40" x2="40" y2="120" stroke="#6F859C" stroke-width="1" opacity="0.3"/>
+          <line x1="160" y1="20" x2="140" y2="140" stroke="#6F859C" stroke-width="1.2" opacity="0.4"/>
+          <line x1="280" y1="60" x2="260" y2="160" stroke="#6F859C" stroke-width="1" opacity="0.3"/>
+          <line x1="340" y1="30" x2="320" y2="130" stroke="#6F859C" stroke-width="1.4" opacity="0.35"/>
+          <path d="M0 240 L140 185 L280 230 L400 170 L400 240 Z" fill="#0C1014"/>
+        </svg>`
       },
       {
         id: "OS-06",
@@ -481,7 +708,20 @@
         voice: "Articulate, analytical, mentally active",
         behavior: "Hedges that shift the moment an option is endlessly re-evaluated. She draws a line across the path to break the loop.",
         psychology: "Overthinking and cognitive loops. Pattern interruption through deliberate decision.",
-        quote: "You have walked this turn seven times in your thoughts. Drop an anchor or keep spinning."
+        quote: "You have walked this turn seven times in your thoughts. Drop an anchor or keep spinning.",
+        svg: `<svg viewBox="0 0 400 240" class="w-full h-44 object-cover" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradMaze" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1A131C"/>
+              <stop offset="60%" stop-color="#36293A"/>
+              <stop offset="100%" stop-color="#5C4A63"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="240" fill="url(#gradMaze)"/>
+          <path d="M40 240 V 160 H 120 V 100 H 220 V 160 H 300 V 80 H 380 V 240" stroke="#A78BAE" stroke-width="2.5" fill="none" opacity="0.5"/>
+          <path d="M80 240 V 200 H 160 V 140 H 260 V 200 H 340 V 120" stroke="#775B7F" stroke-width="1.8" fill="none" opacity="0.4"/>
+          <circle cx="220" cy="100" r="3" fill="#FAF7F2"/>
+        </svg>`
       },
       {
         id: "OS-07",
@@ -492,7 +732,20 @@
         voice: "Curious, experimental, encouraging",
         behavior: "Dense thickets where seeds require soil disturbance to sprout. He cuts a narrow notch to see what grows.",
         psychology: "Behavioral activation and overcoming rut stagnation through micro-action.",
-        quote: "A path is not discovered fully paved. It is made by stepping where the brambles give way."
+        quote: "A path is not discovered fully paved. It is made by stepping where the brambles give way.",
+        svg: `<svg viewBox="0 0 400 240" class="w-full h-44 object-cover" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradVerdant" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0E1712"/>
+              <stop offset="60%" stop-color="#1B2E23"/>
+              <stop offset="100%" stop-color="#2D4436"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="240" fill="url(#gradVerdant)"/>
+          <path d="M0 240 Q 60 120 120 240 Q 180 80 240 240 Q 320 110 400 240 Z" fill="#0A110D"/>
+          <path d="M40 240 Q 140 140 200 240 Q 280 150 360 240 Z" fill="#13221A" opacity="0.8"/>
+          <circle cx="200" cy="70" r="2" fill="#75C28F" filter="drop-shadow(0 0 4px #75C28F)"/>
+        </svg>`
       },
       {
         id: "OS-08",
@@ -503,25 +756,51 @@
         voice: "Quiet, patient, possibility-oriented",
         behavior: "The edge where the stars touch cold open sea. She watches for the faint blue seam of dawn.",
         psychology: "Restoring agency and orientation during existential despair.",
-        quote: "The dark feels absolute only because it is wide. Dawn does not argue with midnight; it arrives."
+        quote: "The dark feels absolute only because it is wide. Dawn does not argue with midnight; it arrives.",
+        svg: `<svg viewBox="0 0 400 240" class="w-full h-44 object-cover" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradHorizon" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0E0D17"/>
+              <stop offset="50%" stop-color="#1E1C2B"/>
+              <stop offset="85%" stop-color="#3D3B54"/>
+              <stop offset="100%" stop-color="#6F6B91"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="240" fill="url(#gradHorizon)"/>
+          <line x1="0" y1="180" x2="400" y2="180" stroke="#DFBF7A" stroke-width="0.75" opacity="0.6"/>
+          <circle cx="80" cy="50" r="1.5" fill="#FAF7F2" opacity="0.8"/>
+          <circle cx="160" cy="80" r="1.2" fill="#FAF7F2" opacity="0.6"/>
+          <circle cx="280" cy="40" r="1.8" fill="#FAF7F2" opacity="0.9"/>
+          <circle cx="340" cy="90" r="1.2" fill="#FAF7F2" opacity="0.5"/>
+        </svg>`
       }
     ];
 
-    // RENDER WANDERER CARDS
+    // RENDER WANDERER CARDS WITH ARTWORK
     const grid = document.getElementById('wandererGrid');
     wanderers.forEach((w, index) => {
       const card = document.createElement('div');
-      card.className = "bg-charcoal border border-stone-800 p-6 hover:border-gold/60 transition duration-300 group cursor-pointer frame-ornate";
+      card.className = "bg-charcoal border border-stone-800 hover:border-gold/60 transition duration-300 group cursor-pointer frame-ornate flex flex-col justify-between overflow-hidden";
       card.onclick = () => openModal(index);
       card.innerHTML = `
-        <div class="flex justify-between items-start mb-6">
-          <span class="text-xs font-serif text-gold tracking-widest">${w.id}</span>
-          <span class="text-[10px] tracking-widest uppercase border border-stone-800 px-2 py-0.5 text-stone-500">${w.territory}</span>
+        <div>
+          <div class="relative overflow-hidden border-b border-stone-800">
+            ${w.svg}
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-80"></div>
+            <div class="absolute top-3 left-3 bg-charcoal/80 border border-gold/40 px-2 py-0.5 text-[10px] font-serif text-gold tracking-widest uppercase">
+              ${w.id}
+            </div>
+            <div class="absolute top-3 right-3 text-[10px] tracking-widest uppercase bg-black/60 border border-stone-700 px-2 py-0.5 text-stone-300">
+              ${w.territory}
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-2xl text-bone group-hover:text-gold transition">${w.name}</h3>
+            <p class="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">${w.theme}</p>
+          </div>
         </div>
-        <h3 class="font-serif text-2xl text-bone group-hover:text-gold transition">${w.name}</h3>
-        <p class="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">${w.theme}</p>
-        <div class="mt-6 pt-4 border-t border-stone-900 flex justify-between items-center text-xs text-stone-500">
-          <span>Inspect Horizon</span>
+        <div class="px-6 pb-5 pt-3 border-t border-stone-900/80 flex justify-between items-center text-xs text-stone-500">
+          <span>Witness Territory</span>
           <span class="group-hover:translate-x-1 transition text-gold">→</span>
         </div>
       `;
@@ -534,9 +813,12 @@
       const modal = document.getElementById('wandererModal');
       const content = document.getElementById('modalContent');
       content.innerHTML = `
+        <div class="border border-stone-800 overflow-hidden mb-4">
+          ${w.svg}
+        </div>
         <div class="flex justify-between items-baseline border-b border-stone-800 pb-4">
           <div>
-            <span class="text-gold text-xs font-serif tracking-widest uppercase">${w.id} •${w.territory}</span>
+            <span class="text-gold text-xs font-serif tracking-widest uppercase">${w.id} • ${w.territory}</span>
             <h2 class="font-serif text-3xl text-bone mt-1">${w.name}</h2>
           </div>
           <span class="text-xs text-stone-400 italic font-serif">Voice: ${w.voice}</span>
@@ -671,7 +953,7 @@
       const w = wanderers[targetIdx];
       const res = document.getElementById('calibrationResult');
       document.getElementById('resTitle').innerText = `${w.territory} (${w.name}'s Horizon)`;
-      document.getElementById('resDesc').innerText = `${w.behavior} Underneath:${w.psychology}`;
+      document.getElementById('resDesc').innerText = `${w.behavior} Underneath: ${w.psychology}`;
       document.getElementById('resWanderer').innerText = `Wanderer Voice: ${w.voice}`;
       res.classList.remove('hidden');
     }

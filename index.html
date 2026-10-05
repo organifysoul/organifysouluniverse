@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrganifySoul — The Inner World Portal</title>
+  <meta name="description" content="A fantasy-inspired psychological universe where invisible inner experiences become physical places, encounters, and journeys. Discover The Inner Journey: 8-Path Digital Codex.">
+  
+  <!-- Typography: Cinzel for Display/Titles & Plus Jakarta Sans for Editorial Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: '#F5EFEB',
+            bone: '#FAF7F2',
+            charcoal: '#151412',
+            ink: '#26231F',
+            gold: {
+              DEFAULT: '#C5A059',
+              light: '#DFBF7A',
+              dark: '#9E7D3B'
+            },
+            ember: '#8C382C',
+            veil: '#2A3342',
+            sunward: '#C98B2C',
+            stillwater: '#3A5051',
+            rainfall: '#384454',
+            maze: '#5C4A63',
+            verdant: '#2D4436',
+            horizon: '#3D3B54'
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Editorial Codex aesthetic touches */
+    ::selection {
+      background: #C5A059;
+      color: #151412;
+    }
+    
+    .frame-ornate {
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      position: relative;
+    }
+    .frame-ornate::before, .frame-ornate::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border: 1px solid #C5A059;
+    }
+    .frame-ornate::before { top: -3px; left: -3px; }
+    .frame-ornate::after { bottom: -3px; right: -3px; }
+
+    .glow-parchment {
+      background: radial-gradient(circle at 50% 30%, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+    }
+
+    /* Subtle texture simulation */
+    .bg-parchment-grain {
+      background-color: #151412;
+      background-image: radial-gradient(#26231F 0.75px, transparent 0.75px);
+      background-size: 24px 24px;
+    }
+
+    /* Hide scrollbars for clean codex navigation */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-charcoal text-[#DDD7CD] font-sans antialiased selection:bg-gold selection:text-charcoal bg-parchment-grain min-h-screen">
+
+  <!-- TOP ASTRONOMICAL / NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-charcoal/90 backdrop-blur-md border-b border-gold/20 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#gateway" class="group flex items-center space-x-3">
+        <span class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold font-serif text-sm group-hover:border-gold transition">
+          ✦
+        </span>
+        <span class="font-serif tracking-[0.25em] text-lg text-bone font-bold group-hover:text-gold transition">
+          ORGANIFYSOUL
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-[0.18em] uppercase text-stone-400">
+        <a href="#territories" class="hover:text-gold transition">The Eight Horizons</a>
+        <a href="#codex" class="hover:text-gold transition">The 42-Page Journey</a>
+        <a href="#pathfinder" class="hover:text-gold transition">Compass Calibration</a>
+        <a href="#relic" class="hover:text-gold transition">The Codex</a>
+      </nav>
+
+      <a href="#relic" class="inline-flex items-center space-x-2 text-xs font-semibold tracking-widest uppercase border border-gold/40 px-5 py-2.5 text-gold hover:bg-gold hover:text-charcoal transition duration-300">
+        <span>Enter Journey</span>
+        <span>→</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- THRESHOLD 1: THE GATEWAY (HERO) -->
+    <section id="gateway" class="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 py-24 glow-parchment overflow-hidden border-b border-gold/15">
+      <div class="max-w-4xl mx-auto z-10 space-y-8">
+        
+        <div class="inline-flex items-center space-x-3 text-gold/80 text-xs tracking-[0.3em] uppercase">
+          <span class="h-[1px] w-8 bg-gold/40"></span>
+          <span>Inner World Exploration</span>
+          <span class="h-[1px] w-8 bg-gold/40"></span>
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-light text-bone tracking-tight leading-[1.15]">
+          The Inner World makes the <br>
+          <span class="italic font-normal text-gold font-serif">invisible visible.</span>
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-base sm:text-lg text-stone-300 leading-relaxed font-light">
+          A living landscape where hidden friction, grief, loops, and stillness take shape as physical terrain, routes, and encounters. Explore the world first. Discover what it says about you underneath.
+        </p>
+
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-5 text-sm tracking-wider">
+          <a href="#territories" class="w-full sm:w-auto px-8 py-4 bg-gold text-charcoal font-semibold uppercase tracking-[0.15em] hover:bg-gold-light transition shadow-lg shadow-gold/10">
+            Witness the Eight Wanderers
+          </a>
+          <a href="#codex" class="w-full sm:w-auto px-8 py-4 border border-stone-600 text-stone-300 uppercase tracking-[0.15em] hover:border-gold hover:text-gold transition">
+            Inspect the 42-Page Relic
+          </a>
+        </div>
+
+        <!-- Atmospheric Micro-Proof -->
+        <div class="pt-12 flex justify-center items-center space-x-8 text-xs text-stone-500 font-serif tracking-widest uppercase">
+          <span>8 Territories</span>
+          <span>•</span>
+          <span>8 Wanderers</span>
+          <span>•</span>
+          <span>Screen-First Digital Codex</span>
+        </div>
+      </div>
+
+      <!-- Astrological/Grid Background Decorator -->
+      <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-10">
+        <div class="w-[700px] h-[700px] rounded-full border border-gold/60"></div>
+        <div class="absolute w-[500px] h-[500px] rounded-full border border-stone-400 border-dashed"></div>
+        <div class="absolute w-[900px] h-[900px] rounded-full border border-gold/30"></div>
+      </div>
+    </section>
+
+    <!-- CREATIVE PRINCIPLE BANNER: WORLD -> BEHAVIOR -> SYMBOL -> BEAUTY -->
+    <section class="py-16 border-b border-gold/15 bg-charcoal/50">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-2">
+          <span class="font-serif text-gold text-xs tracking-widest uppercase block">I. World</span>
+          <p class="text-xs text-stone-400">What ground do you stand upon?</p>
+        </div>
+        <div class="space-y-2">
+          <span class="font-serif text-gold text-xs tracking-widest uppercase block">II. Behavior</span>
+          <p class="text-xs text-stone-400">What physical force occurs?</p>
+        </div>
+        <div class="space-y-2">
+          <span class="font-serif text-gold text-xs tracking-widest uppercase block">III. Symbol</span>
+          <p class="text-xs text-stone-400">What truth does it quietly mirror?</p>
+        </div>
+        <div class="space-y-2">
+          <span class="font-serif text-gold text-xs tracking-widest uppercase block">IV. Beauty</span>
+          <p class="text-xs text-stone-400">How does the path become memorable?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THRESHOLD 2: THE EIGHT TERRITORIES & WANDERERS -->
+    <section id="territories" class="py-28 px-6 max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+        <span class="text-gold text-xs tracking-[0.3em] uppercase block font-serif">The Living Geography</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-bone font-light">The Eight Wanderers & Territories</h2>
+        <p class="text-stone-400 text-sm sm:text-base leading-relaxed">
+          They are not personified emotions or clinical lessons. They are figures shaped by the paths they survived. Select a territory to witness its physical phenomena.
+        </p>
+      </div>
+
+      <!-- Territory Selector Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="wandererGrid">
+        <!-- Rendered by JavaScript dynamically from Canon definitions -->
+      </div>
+
+      <!-- Wanderer Detailed Modal / Inspection Drawer -->
+      <div id="wandererModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-charcoal border border-gold/40 max-w-2xl w-full p-8 relative frame-ornate max-h-[90vh] overflow-y-auto">
+          <button onclick="closeModal()" class="absolute top-6 right-6 text-stone-400 hover:text-gold text-2xl font-serif">✕</button>
+          
+          <div id="modalContent" class="space-y-6">
+            <!-- Injected by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THRESHOLD 3: THE 42-PAGE DIGITAL CODEX (PRODUCT PRESENTATION) -->
+    <section id="codex" class="py-28 px-6 border-t border-b border-gold/15 bg-[#181714]">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Product Left Narrative -->
+          <div class="lg:col-span-5 space-y-8">
+            <div class="space-y-3">
+              <span class="text-gold text-xs tracking-[0.25em] uppercase font-serif">Flagship Relic</span>
+              <h2 class="font-serif text-3xl sm:text-4xl text-bone font-light leading-snug">
+                The Inner Journey <br>
+                <span class="text-gold italic font-normal text-2xl sm:text-3xl">8-Path Digital Self-Love Journal</span>
+              </h2>
+            </div>
+
+            <p class="text-stone-300 text-sm leading-relaxed">
+              Not a generic wellness worksheet or printable planner. Delivered as a hyperlinked 42-page static PDF designed specifically for stylus annotation in GoodNotes, Notability, or Apple Books.
+            </p>
+
+            <!-- Architectural Breakdown (Current Canon: Exactly 42 Pages) -->
+            <div class="space-y-3 text-xs border-l border-gold/30 pl-5">
+              <div class="text-stone-300 font-medium tracking-wide">
+                <span class="text-gold font-serif">P01–P05:</span> Threshold & Orientation (Entry, Map, Path Selection)
+              </div>
+              <div class="text-stone-300 font-medium tracking-wide">
+                <span class="text-gold font-serif">P06–P37:</span> The 8 Wanderer Chambers (4 Structured Pages per Path)
+              </div>
+              <div class="text-stone-300 font-medium tracking-wide">
+                <span class="text-gold font-serif">P38–P42:</span> Field Reflection Suite (Check-In, Pattern Tracker, Closing)
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-6 text-xs text-stone-400 pt-2">
+              <div>
+                <span class="block text-bone font-serif text-base">42</span>
+                <span>Hyperlinked Pages</span>
+              </div>
+              <div class="h-6 w-[1px] bg-stone-700"></div>
+              <div>
+                <span class="block text-bone font-serif text-base">Screen-First</span>
+                <span>Tablet Annotation</span>
+              </div>
+              <div class="h-6 w-[1px] bg-stone-700"></div>
+              <div>
+                <span class="block text-bone font-serif text-base">Zero</span>
+                <span>Recurring Fees</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="#relic" class="inline-block px-7 py-3.5 bg-gold text-charcoal font-semibold text-xs uppercase tracking-widest hover:bg-gold-light transition">
+                Examine Access Details
+              </a>
+            </div>
+          </div>
+
+          <!-- Product Interactive Spread Preview -->
+          <div class="lg:col-span-7">
+            <div class="bg-charcoal border border-gold/30 p-4 sm:p-8 rounded frame-ornate shadow-2xl">
+              <div class="flex justify-between items-center border-b border-stone-800 pb-4 mb-6 text-xs text-stone-400 font-serif tracking-widest">
+                <span>ARCHIVAL SPREAD PREVIEW</span>
+                <span id="previewPageIndicator">PAGE 06 OF 42 — KAELROS</span>
+              </div>
+
+              <!-- Interactive Codex Simulated Viewport -->
+              <div id="codexViewport" class="aspect-[16/10] bg-[#0E0D0B] border border-stone-800 p-6 flex flex-col justify-between text-stone-300 transition-all duration-300">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span id="viewportTerritory" class="text-gold text-xs tracking-widest uppercase font-serif">EMBERWILDS • PATH 01</span>
+                    <h3 id="viewportTitle" class="font-serif text-xl sm:text-2xl text-bone mt-1">The Pressure Crucible</h3>
+                  </div>
+                  <span id="viewportWanderer" class="text-xs border border-stone-700 px-3 py-1 text-stone-400">OS-01 KAELROS</span>
+                </div>
+
+                <div id="viewportQuote" class="my-auto italic font-serif text-sm sm:text-base text-stone-300 border-l-2 border-gold/60 pl-4 py-1">
+                  "Anger is not a defect of character. It is an unchanneled ignition. Stand where the spark cannot set your house on fire."
+                </div>
+
+                <div class="flex justify-between items-end border-t border-stone-900 pt-4 text-[11px] text-stone-500">
+                  <span>TAP TABS TO SWITCH EXPEDITIONS</span>
+                  <span>HYPERLINKED PDF STATIC ARCHITECTURE</span>
+                </div>
+              </div>
+
+              <!-- Page Switcher Tabs -->
+              <div class="mt-6 flex flex-wrap gap-2 text-[11px]">
+                <button onclick="setPreview(0)" class="preview-btn active px-3 py-1.5 border border-gold bg-gold/10 text-gold transition">P06 Kaelros</button>
+                <button onclick="setPreview(1)" class="preview-btn px-3 py-1.5 border border-stone-700 text-stone-400 hover:border-gold hover:text-gold transition">P10 Nyxara</button>
+                <button onclick="setPreview(2)" class="preview-btn px-3 py-1.5 border border-stone-700 text-stone-400 hover:border-gold hover:text-gold transition">P18 Elowen</button>
+                <button onclick="setPreview(3)" class="preview-btn px-3 py-1.5 border border-stone-700 text-stone-400 hover:border-gold hover:text-gold transition">P22 Dorian</button>
+                <button onclick="setPreview(4)" class="preview-btn px-3 py-1.5 border border-stone-700 text-stone-400 hover:border-gold hover:text-gold transition">P41 Pattern Tracker</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- THRESHOLD 4: THE COMPASS CALIBRATION (PATHFINDER) -->
+    <section id="pathfinder" class="py-28 px-6 max-w-4xl mx-auto">
+      <div class="text-center space-y-4 mb-16">
+        <span class="text-gold text-xs tracking-[0.3em] uppercase block font-serif">Path Calibration</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-bone font-light">Where does your current trail narrow?</h2>
+        <p class="text-stone-400 text-sm leading-relaxed max-w-xl mx-auto">
+          We do not diagnose. Select the environmental condition that mirrors what you physically feel in ordinary life right now.
+        </p>
+      </div>
+
+      <div class="space-y-4" id="calibrationOptions">
+        <!-- Injected via JavaScript for clean selection -->
+      </div>
+
+      <div id="calibrationResult" class="mt-10 p-8 border border-gold/40 bg-charcoal/80 frame-ornate hidden transition-all">
+        <div class="text-gold text-xs font-serif tracking-widest uppercase">Your Resonant Horizon</div>
+        <h3 id="resTitle" class="font-serif text-2xl text-bone mt-1"></h3>
+        <p id="resDesc" class="text-sm text-stone-300 mt-3 leading-relaxed"></p>
+        <div class="mt-6 pt-4 border-t border-stone-800 flex items-center justify-between text-xs">
+          <span id="resWanderer" class="text-stone-400 font-serif"></span>
+          <a href="#relic" class="text-gold hover:underline uppercase tracking-wider font-semibold">Take this path in the Codex →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- THRESHOLD 5: THE ARTIFACT ACQUISITION (STORE / PURCHASE) -->
+    <section id="relic" class="py-24 px-6 border-t border-gold/15 bg-charcoal glow-parchment">
+      <div class="max-w-3xl mx-auto border border-gold/50 bg-[#12110F] p-8 sm:p-14 text-center frame-ornate space-y-8">
+        
+        <div class="space-y-3">
+          <span class="text-gold text-xs tracking-[0.3em] uppercase font-serif">Begin Exploration</span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-bone font-light">Obtain The Inner Journey</h2>
+          <p class="text-stone-400 text-sm max-w-xl mx-auto leading-relaxed">
+            Instant digital access to the complete 42-page hyperlinked codex. Clean screen-first design calibrated for tablet writing applications.
+          </p>
+        </div>
+
+        <div class="py-6 border-y border-stone-800 flex flex-col sm:flex-row items-center justify-around gap-6">
+          <div class="text-left space-y-1">
+            <span class="text-stone-500 text-xs tracking-wider uppercase">Format & Deliverable</span>
+            <div class="text-bone font-serif text-lg">Hyperlinked Static PDF</div>
+            <div class="text-xs text-stone-400">42 Pages • Instant Download</div>
+          </div>
+          <div class="h-10 w-[1px] bg-stone-800 hidden sm:block"></div>
+          <div class="text-left space-y-1">
+            <span class="text-stone-500 text-xs tracking-wider uppercase">Acquisition</span>
+            <div class="text-gold font-serif text-3xl font-light">$19 <span class="text-xs text-stone-400">USD</span></div>
+            <div class="text-xs text-stone-400">One-time purchase • Lifetime file ownership</div>
+          </div>
+        </div>
+
+        <ul class="text-xs text-stone-400 space-y-2 max-w-md mx-auto text-left list-disc list-inside">
+          <li>Complete 8 Wanderer Chambers (P6–P37)[cite: 1]</li>
+          <li>Internal tabbed jump navigation for GoodNotes / Notability / Acrobat[cite: 1]</li>
+          <li>Emotional check-in, thought dump, and habit pattern tracker suites[cite: 1]</li>
+          <li>High-fidelity illustrated world lore without medical/clinical lectures[cite: 1]</li>
+        </ul>
+
+        <div class="pt-4">
+          <!-- Connect this checkout URL to Lemon Squeezy, Gumroad, or Stripe -->
+          <a href="#" class="inline-block w-full sm:w-auto px-12 py-4 bg-gold text-charcoal font-serif font-bold text-sm tracking-[0.2em] uppercase hover:bg-gold-light transition shadow-xl shadow-gold/10">
+            Download The 42-Page Codex
+          </a>
+          <span class="block text-[11px] text-stone-500 mt-4 tracking-wider">
+            SECURE ENCRYPTED CHECKOUT • INSTANT HYPERLINKED PDF DELIVERY
+          </span>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- COLOPHON & FOOTNOTES -->
+  <footer class="border-t border-stone-900 bg-black/90 py-16 px-6 text-stone-500 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="space-y-3">
+        <span class="font-serif text-bone tracking-widest uppercase text-sm block">ORGANIFYSOUL</span>
+        <p class="leading-relaxed text-stone-400">
+          The Inner World makes the invisible visible[cite: 1]. A narrative psychological universe built to restore wonder to personal reflection[cite: 1].
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <span class="font-serif text-stone-400 tracking-wider uppercase block">Territories of the Realm</span>
+        <p class="leading-relaxed">
+          Emberwilds • Veilreach • Sunward Gardens • Stillwater • Rainfall • Turning Maze • Verdant Frontier • Far Horizon[cite: 1]
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <span class="font-serif text-stone-400 tracking-wider uppercase block">Ethical Footnote</span>
+        <p class="leading-relaxed text-stone-500">
+          OrganifySoul is an imaginative and reflective exploration framework[cite: 1]. It does not provide medical diagnosis, psychotherapy, or clinical healthcare treatment[cite: 1]. Travelers seeking psychological healthcare should consult licensed professionals.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-stone-900 flex flex-col sm:flex-row justify-between items-center text-[11px] text-stone-600">
+      <span>© 2026 OrganifySoul. All rights reserved.</span>
+      <span class="mt-2 sm:mt-0 font-serif">Story → Mechanic → Psychology → You[cite: 1]</span>
+    </div>
+  </footer>
+
+  <!-- DATA & ENGINE SCRIPT -->
+  <script>
+    // LOCKED CANON DATA FOR THE EIGHT WANDERERS & TERRITORIES
+    const wanderers = [
+      {
+        id: "OS-01",
+        name: "Kaelros",
+        territory: "Emberwilds",
+        color: "#8C382C",
+        theme: "Pressure, heat, reaction, release",
+        voice: "Blunt, practical, protective, action-oriented",
+        behavior: "The earth fractures under heat until an outlet is carved. He redirects pressure before the chamber ruptures.",
+        psychology: "Anger and distress tolerance. Experiencing boundary defense without uncontrolled destruction.",
+        quote: "You don't put out a furnace by pretending it isn't burning. You channel the flue."
+      },
+      {
+        id: "OS-02",
+        name: "Nyxara",
+        territory: "Veilreach",
+        color: "#2A3342",
+        theme: "Uncertainty, threat detection, grounding",
+        voice: "Precise, questioning, evidence-aware",
+        behavior: "Mist wraps the pass so thickly that feet cannot see stone. She stops walking on rumors and tests the rock beneath her heels.",
+        psychology: "Anxiety and hyper-vigilance. Disentangling catastrophic projection from tangible evidence.",
+        quote: "Fear assumes every shadow is sharp. I do not run until I touch the edge myself."
+      },
+      {
+        id: "OS-03",
+        name: "Seraphin",
+        territory: "Sunward Gardens",
+        color: "#C98B2C",
+        theme: "Self-worth, acceptance, warmth, joy",
+        voice: "Warm, playful, disarming",
+        behavior: "Sunlight pools where walls have been lowered. He refuses to wear armor in an orchard.",
+        psychology: "Unconditional self-worth. Softening protective defensiveness to receive warmth.",
+        quote: "You have earned the right to exist without performing a siege every morning."
+      },
+      {
+        id: "OS-04",
+        name: "Elowen",
+        territory: "Stillwater",
+        color: "#3A5051",
+        theme: "Overstimulation, stillness, presence, calm",
+        voice: "Quiet, spacious, gentle",
+        behavior: "A subterranean mirror pool where ripples settle only when oars are completely drawn from the water.",
+        psychology: "Nervous system regulation. Stepping outside sensory overload into deep stillness.",
+        quote: "The water only clears when you stop thrashing to see your reflection."
+      },
+      {
+        id: "OS-05",
+        name: "Dorian",
+        territory: "Rainfall",
+        color: "#384454",
+        theme: "Grief, allowing, processing, moving forward",
+        voice: "Restrained, honest, emotionally perceptive",
+        behavior: "Perpetual grey downpours that saturate the soil until the riverbeds deepen naturally.",
+        psychology: "Grief, loss, and emotional processing. Allowing sadness its rightful season.",
+        quote: "Dry ground cannot be forced after a storm. Let it soak through. The path will show."
+      },
+      {
+        id: "OS-06",
+        name: "Thalia",
+        territory: "Turning Maze",
+        color: "#5C4A63",
+        theme: "Rumination, possibilities, indecision, interruption",
+        voice: "Articulate, analytical, mentally active",
+        behavior: "Hedges that shift the moment an option is endlessly re-evaluated. She draws a line across the path to break the loop.",
+        psychology: "Overthinking and cognitive loops. Pattern interruption through deliberate decision.",
+        quote: "You have walked this turn seven times in your thoughts. Drop an anchor or keep spinning."
+      },
+      {
+        id: "OS-07",
+        name: "Lucien",
+        territory: "Verdant Frontier",
+        color: "#2D4436",
+        theme: "Stagnation, experimentation, progress, growth",
+        voice: "Curious, experimental, encouraging",
+        behavior: "Dense thickets where seeds require soil disturbance to sprout. He cuts a narrow notch to see what grows.",
+        psychology: "Behavioral activation and overcoming rut stagnation through micro-action.",
+        quote: "A path is not discovered fully paved. It is made by stepping where the brambles give way."
+      },
+      {
+        id: "OS-08",
+        name: "Selene",
+        territory: "Far Horizon",
+        color: "#3D3B54",
+        theme: "Hopelessness, possibility, hope, forward motion",
+        voice: "Quiet, patient, possibility-oriented",
+        behavior: "The edge where the stars touch cold open sea. She watches for the faint blue seam of dawn.",
+        psychology: "Restoring agency and orientation during existential despair.",
+        quote: "The dark feels absolute only because it is wide. Dawn does not argue with midnight; it arrives."
+      }
+    ];
+
+    // RENDER WANDERER CARDS
+    const grid = document.getElementById('wandererGrid');
+    wanderers.forEach((w, index) => {
+      const card = document.createElement('div');
+      card.className = "bg-charcoal border border-stone-800 p-6 hover:border-gold/60 transition duration-300 group cursor-pointer frame-ornate";
+      card.onclick = () => openModal(index);
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-6">
+          <span class="text-xs font-serif text-gold tracking-widest">${w.id}</span>
+          <span class="text-[10px] tracking-widest uppercase border border-stone-800 px-2 py-0.5 text-stone-500">${w.territory}</span>
+        </div>
+        <h3 class="font-serif text-2xl text-bone group-hover:text-gold transition">${w.name}</h3>
+        <p class="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">${w.theme}</p>
+        <div class="mt-6 pt-4 border-t border-stone-900 flex justify-between items-center text-xs text-stone-500">
+          <span>Inspect Horizon</span>
+          <span class="group-hover:translate-x-1 transition text-gold">→</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // MODAL CONTROL
+    function openModal(index) {
+      const w = wanderers[index];
+      const modal = document.getElementById('wandererModal');
+      const content = document.getElementById('modalContent');
+      content.innerHTML = `
+        <div class="flex justify-between items-baseline border-b border-stone-800 pb-4">
+          <div>
+            <span class="text-gold text-xs font-serif tracking-widest uppercase">${w.id} •${w.territory}</span>
+            <h2 class="font-serif text-3xl text-bone mt-1">${w.name}</h2>
+          </div>
+          <span class="text-xs text-stone-400 italic font-serif">Voice: ${w.voice}</span>
+        </div>
+        
+        <blockquote class="italic text-base text-stone-200 border-l-2 border-gold/70 pl-4 py-1 font-serif">
+          "${w.quote}"
+        </blockquote>
+
+        <div class="space-y-4 text-xs leading-relaxed text-stone-300">
+          <div>
+            <strong class="text-gold uppercase tracking-wider block font-serif mb-1">Physical Territory Phenomenon</strong>
+            <p>${w.behavior}</p>
+          </div>
+          <div>
+            <strong class="text-gold uppercase tracking-wider block font-serif mb-1">Psychological Underneath</strong>
+            <p>${w.psychology}</p>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-stone-800 flex justify-between items-center">
+          <span class="text-xs text-stone-500">Included in the 42-page static PDF codex</span>
+          <a href="#relic" onclick="closeModal()" class="px-5 py-2 bg-gold text-charcoal font-semibold text-xs tracking-wider uppercase hover:bg-gold-light transition">
+            Walk This Path
+          </a>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('wandererModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // CODEX PREVIEW ENGINE
+    const codexPreviews = [
+      {
+        page: "PAGE 06 OF 42 — KAELROS",
+        territory: "EMBERWILDS • PATH 01",
+        wanderer: "OS-01 KAELROS",
+        title: "The Pressure Crucible",
+        quote: "Anger is not a defect of character. It is an unchanneled ignition. Stand where the spark cannot set your house on fire."
+      },
+      {
+        page: "PAGE 10 OF 42 — NYXARA",
+        territory: "VEILREACH • PATH 02",
+        wanderer: "OS-02 NYXARA",
+        title: "The Grounding Ridge",
+        quote: "Fear assumes every shadow is sharp. I do not run until I touch the rock with my own hands."
+      },
+      {
+        page: "PAGE 18 OF 42 — ELOWEN",
+        territory: "STILLWATER • PATH 04",
+        wanderer: "OS-04 ELOWEN",
+        title: "The Mirror Basin",
+        quote: "The pool does not clear by fighting the waves. Draw the oars up. Let the water remember its stillness."
+      },
+      {
+        page: "PAGE 22 OF 42 — DORIAN",
+        territory: "RAINFALL • PATH 05",
+        wanderer: "OS-05 DORIAN",
+        title: "The Saturated Ground",
+        quote: "Grief cannot be bridged before the flood recedes. Walk gently on earth that is still drinking."
+      },
+      {
+        page: "PAGE 41 OF 42 — PATTERN TRACKER",
+        territory: "INNER WORLD • SUITE",
+        wanderer: "FIELD ARTIFACT",
+        title: "The Recurrence Map",
+        quote: "Notice when the fog returns. Not to judge the weather, but to know when to strike camp."
+      }
+    ];
+
+    function setPreview(idx) {
+      const p = codexPreviews[idx];
+      document.getElementById('previewPageIndicator').innerText = p.page;
+      document.getElementById('viewportTerritory').innerText = p.territory;
+      document.getElementById('viewportTitle').innerText = p.title;
+      document.getElementById('viewportWanderer').innerText = p.wanderer;
+      document.getElementById('viewportQuote').innerText = `"${p.quote}"`;
+
+      const buttons = document.querySelectorAll('.preview-btn');
+      buttons.forEach((b, i) => {
+        if (i === idx) {
+          b.className = "preview-btn active px-3 py-1.5 border border-gold bg-gold/10 text-gold transition";
+        } else {
+          b.className = "preview-btn px-3 py-1.5 border border-stone-700 text-stone-400 hover:border-gold hover:text-gold transition";
+        }
+      });
+    }
+
+    // COMPASS CALIBRATION (PATHFINDER)
+    const calibrationQuestions = [
+      {
+        text: "The temperature is rising. There is immense pressure, and words feel like sparks ready to explode.",
+        target: 0 // Kaelros
+      },
+      {
+        text: "You cannot see two paces ahead. Every creak in the mist feels like an impending collapse.",
+        target: 1 // Nyxara
+      },
+      {
+        text: "Noise is everywhere. Every notification, voice, and demand feels like needles on raw skin.",
+        target: 3 // Elowen
+      },
+      {
+        text: "You are tracing the same decision for the eighth time today, unable to choose a doorway.",
+        target: 5 // Thalia
+      },
+      {
+        text: "Everything feels dried up and stuck. Even small tasks feel buried under heavy dead weight.",
+        target: 6 // Lucien
+      }
+    ];
+
+    const calibContainer = document.getElementById('calibrationOptions');
+    calibrationQuestions.forEach((q, i) => {
+      const opt = document.createElement('div');
+      opt.className = "border border-stone-800 p-4 hover:border-gold/70 cursor-pointer transition text-xs text-stone-300 flex items-center justify-between group";
+      opt.onclick = () => selectCalibration(q.target);
+      opt.innerHTML = `
+        <span class="group-hover:text-bone transition">${q.text}</span>
+        <span class="text-gold text-sm ml-4 font-serif">Select ✦</span>
+      `;
+      calibContainer.appendChild(opt);
+    });
+
+    function selectCalibration(targetIdx) {
+      const w = wanderers[targetIdx];
+      const res = document.getElementById('calibrationResult');
+      document.getElementById('resTitle').innerText = `${w.territory} (${w.name}'s Horizon)`;
+      document.getElementById('resDesc').innerText = `${w.behavior} Underneath:${w.psychology}`;
+      document.getElementById('resWanderer').innerText = `Wanderer Voice: ${w.voice}`;
+      res.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
